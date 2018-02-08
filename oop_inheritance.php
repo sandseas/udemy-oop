@@ -4,7 +4,7 @@
 class MyClass  {
  //public, protected or private  
     //set properties-create a variable
-    public $var = "Sandi is cool!";
+    protected $var = "Sandi is cool!";
     
     //create construct
     public function __construct($text) {
@@ -12,7 +12,7 @@ class MyClass  {
     }
     
     //set function methods
-    public function my_function()   {
+    protected function my_function()   {
         
         // code...
         echo $this->var;
@@ -21,12 +21,11 @@ class MyClass  {
 }
 
 class NewClass extends MyClass {
-    
+    public function display() {
+        $this->my_function();
+    }   
     
 }
 
-//instantiate a new object in a class
-$myclass = new MyClass("Hello");
-//call an instance of the class
-$myclass->my_function();
-  
+$myclass = new NewClass("hello");
+$myclass->display();
